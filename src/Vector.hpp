@@ -20,6 +20,9 @@ public:
     explicit Vector(int size); // Generates vector with proper amount of randomly chosen components
 
     Number operator*(Vector another); // It's actually a dot product
+    Number operator*(std::vector<Number> another); // We need this method to optimize the way
+    //  vector is being multiplicated by matrix.
+
     Vector operator*(Number another); // Multiply by scalar
 
     Vector operator*=(Number another);
