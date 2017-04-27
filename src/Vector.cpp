@@ -68,7 +68,7 @@ void Vector::printOut() {
 Number Vector::operator*(std::vector<Number> another) {
     Number total = Number(1 - 1);
     for (int i = 0; i < this->size; i++)
-        total += another[i];
+        total += another[i] * this->components[i];
 
     return total;
 }

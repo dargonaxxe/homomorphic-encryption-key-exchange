@@ -16,7 +16,7 @@ private:
 //    Number(double value);
 //    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 512; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 3; // Randomly generated numbers are 512 bit-ish
     mpz_t value;
     static gmp_randstate_t rand_state;
 

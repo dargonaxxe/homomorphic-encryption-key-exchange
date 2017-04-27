@@ -10,7 +10,7 @@ Matrix::Matrix() {
 }
 
 int Matrix::calcCellNumber(int i, int j, int n) {
-    return i * n + j;
+    return (i * n) + j;
 }
 
 Matrix::Matrix(int height, int width) {
@@ -66,7 +66,7 @@ std::vector<Number> Matrix::getRow(int i) {
 std::vector<Number> Matrix::getCol(int i) {
     std::vector<Number> total;
     for (int j = 0; j < this->height; j++)
-        total.push_back(this->cells[Matrix::calcCellNumber(i, j, this->width)]);
+        total.push_back(this->cells[Matrix::calcCellNumber(j, i, this->width)]);
 
     return total;
 }
