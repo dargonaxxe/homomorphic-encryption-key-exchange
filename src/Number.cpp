@@ -38,10 +38,10 @@ Number::Number(signed long int value) {
 //    mpz_init_set_str(this->value, str, base);
 //}
 
-//Number::Number(mpz_t value) {
-//    mpz_init(this->value);
-//    mpz_set(this->value, value);
-//}
+Number::Number(mpz_t value) {
+    mpz_init(this->value);
+    mpz_set(this->value, value);
+}
 
 Number::~Number() {
 //    mpz_clear(this->value);
