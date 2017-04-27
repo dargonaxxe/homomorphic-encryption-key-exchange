@@ -3,11 +3,7 @@ project(homomorphic_enc)
 
 set(CMAKE_CXX_STANDARD 11)
 
-find_package(Eigen3 REQUIRED)
-
 add_definitions(-lgmpxx -lgmp)
-
-include_directories(./eigen)
 
 set(SOURCE_FILES main.cpp Number.cpp Number.hpp)
 add_executable(homomorphic_enc ${SOURCE_FILES})
