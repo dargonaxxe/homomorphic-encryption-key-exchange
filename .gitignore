@@ -1,0 +1,5 @@
+*.dvi
+*.log
+*.ps
+*.aux
+*.pdf
