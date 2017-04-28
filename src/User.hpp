@@ -9,7 +9,6 @@
 #include "Vector.hpp"
 #include "Matrix.hpp"
 #include "GeneratedData.hpp"
-#include "Session.hpp"
 
 class User {
 private:
@@ -25,20 +24,20 @@ private:
     Vector self_open_vector;
     Vector foreign_open_vector;
     Number key;
-    void setOrtMatrix(Matrix& ort_matrix);
-    void setOpenMatrix(Matrix& open_matrix);
-    void setVector(Vector& vector);
-    void calcKey();
-    void calcOpenVector(); // Obvsly you shouldn't use it before foreign matrices are setted up
 
 public:
     User();
 
     User(int n, int k, int p);
+    void calcOpenVector(); // Obvsly you shouldn't use it before foreign matrices are setted up
+    void calcKey();
+    void setOpenMatrix(Matrix& open_matrix);
+    void setOrtMatrix(Matrix& ort_matrix);
+    void setVector(Vector& vector);
     Matrix& getOrtMatrix();
     Matrix& getOpenMatrix();
     Vector& getVector();
-    friend Session;
+//    friend Session;
 };
 
 
