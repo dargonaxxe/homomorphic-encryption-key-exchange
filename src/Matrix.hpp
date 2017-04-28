@@ -5,6 +5,7 @@
 #ifndef HOMOMORPHIC_ENC_MATRIX_HPP
 #define HOMOMORPHIC_ENC_MATRIX_HPP
 
+#include <ostream>
 #include "Vector.hpp"
 #include "Number.hpp"
 
@@ -22,6 +23,13 @@ private:
 public:
     Matrix();
     Matrix(int height, int width);
+
+    friend std::ostream &operator<<(std::ostream &os, Matrix matrix);
+
+    int getHeight() const;
+
+    int getWidth() const;
+
     Matrix(int height, int width, std::vector<Number> cells);
 
     Vector operator*(Vector another);
@@ -38,7 +46,7 @@ public:
     void printOut();
 
     Matrix operator*(Matrix another);
-    Number operator()(int i, int j);
+    Number& operator()(int i, int j);
 
     Vector getVCol(int i);
     Vector getVRow(int i);

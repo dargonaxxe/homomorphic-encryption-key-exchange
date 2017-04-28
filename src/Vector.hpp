@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <ostream>
 #include "Number.hpp"
 
 class Vector {
@@ -29,11 +30,13 @@ public:
 
     Vector operator+=(Vector another);
 
+    friend std::ostream &operator<<(std::ostream &os, const Vector &vector);
+
     Vector operator-=(Vector another);
 
     Vector operator+(Vector another);
 
-    Number operator[](int i);
+    Number& operator[](int i);
 
     Vector copy();
 

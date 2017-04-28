@@ -2,6 +2,7 @@
 // Created by dargonaxxe on 27.04.17.
 //
 
+#include <iostream>
 #include "Vector.hpp"
 
 Vector::Vector() {
@@ -84,7 +85,7 @@ Vector Vector::copy() {
     return Vector(this->size, tmp);
 }
 
-Number Vector::operator[](int i) {
+Number& Vector::operator[](int i) {
     return this->components[i];
 }
 
@@ -97,4 +98,10 @@ Vector Vector::operator-=(Vector another) {
 
 void Vector::setComponent(int i, Number number) {
     this->components[i] = number;
+}
+
+std::ostream &operator<<(std::ostream &os, const Vector &vector) {
+    for (Number number : vector.components)
+        std::cout << number << std::endl;
+    return os;
 }

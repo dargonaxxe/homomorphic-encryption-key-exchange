@@ -89,7 +89,7 @@ Matrix Matrix::operator*(Matrix another) {
     return Matrix(this->height, another.width, cells);
 }
 
-Number Matrix::operator()(int i, int j) {
+Number& Matrix::operator()(int i, int j) {
     return this->cells[Matrix::calcCellNumber(i, j, this->width)];
 }
 
@@ -122,4 +122,22 @@ Vector Matrix::getVRow(int i) {
     std::vector<Number> tmp = this->getRow(i);
 
     return Vector(this->width, tmp);
+}
+
+std::ostream &operator<<(std::ostream &os, Matrix matrix) {
+    for (int i = 0; i < matrix.getHeight(); i++) {
+        for (int j = 0; j < matrix.getWidth(); j++)
+            std::cout << matrix(i, j) << " ";
+        std::cout << std::endl;
+
+    }
+    return os;
+}
+
+int Matrix::getHeight() const {
+    return height;
+}
+
+int Matrix::getWidth() const {
+    return width;
 }

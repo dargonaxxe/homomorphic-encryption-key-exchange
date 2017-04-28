@@ -275,8 +275,9 @@ Number Number::operator/=(Number another) {
 }
 
 std::ostream &operator<<(std::ostream &os, Number number) {
-
-    os << number.getSInt();
+    if (mpz_sgn(number.value) < 0)
+        os << "-";
+    os << number.getUInt();
 
     return os;
 }

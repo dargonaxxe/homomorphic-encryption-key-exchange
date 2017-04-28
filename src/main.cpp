@@ -7,8 +7,6 @@
 #include "GeneratedData.hpp"
 
 
-// TODO: Test data generator class
-
 // TODO: Implement user class
 
 // TODO: Implement session class
@@ -16,17 +14,14 @@
 
 
 int main() {
-    int k = 3;
-    int n = 6;
-    int p = 2;
+    int k = 45;
+    int n = 60;
+    int p = 30;
 
     GeneratedData data_a(k, p, n);
-//
-    data_a.getSecretVector().printOut();
 
-
-    Number a = Number();
-
+    std::cout << data_a.getOrtMatrix();
+    std::cout << data_a.getOrtMatrix() * data_a.getSecretVector();
 
     return 0;
 }
