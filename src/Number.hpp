@@ -16,8 +16,12 @@ private:
 //    Number(double value);
 //    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 3; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 1024 * 32; // Randomly generated numbers are 512 bit-ish
     mpz_t value;
+public:
+    const __mpz_struct *getValue() const;
+
+private:
     static gmp_randstate_t rand_state;
 
     static bool rand_state_initialized;
@@ -68,8 +72,15 @@ public:
     Number operator*=(Number another);
     Number operator*=(long another);
 
+    Number operator/(Number another);
+    Number operator/=(Number another);
+
+    Number operator-=(Number another);
+
     static void initRandState();
     static Number getRandom();
+
+    Number copy();
 
     void printOut(); // Debugging function tho
     ~Number();

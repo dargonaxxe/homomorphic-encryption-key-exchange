@@ -230,7 +230,7 @@ Number Number::operator=(long int another) {
 }
 
 Number Number::operator+=(Number another) {
-    mpz_add(this->value, this->value, another.value);
+    *this = *this + another;
 
     return *this;
 }
@@ -249,6 +249,39 @@ Number Number::operator*=(Number another) {
 
 Number Number::operator*=(long another) {
     mpz_mul_si(this->value, this->value, another);
+
+    return *this;
+}
+
+const __mpz_struct *Number::getValue() const {
+    return value;
+}
+
+Number Number::copy() {
+    mpz_t tmp;
+
+    mpz_init(tmp);
+    mpz_set(tmp, this->value);
+
+    return Number(tmp);
+}
+
+Number Number::operator-=(Number another) {
+    *this = *this - another;
+
+    return *this;
+}
+
+Number Number::operator/(Number another) {
+    mpz_t tmp;
+    mpz_init(tmp);
+
+    mpz_div(tmp, this->value, another.value);
+    return Number(tmp);
+}
+
+Number Number::operator/=(Number another) {
+    *this = *this / another;
 
     return *this;
 }

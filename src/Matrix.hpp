@@ -35,7 +35,15 @@ public:
 
     Vector multTransposed(Vector another);
 
-    // tbh we don't need the matrix multiplication cuz A * (B * v) is much faster
+    void printOut();
+
+    Matrix operator*(Matrix another);
+    Number operator()(int i, int j);
+
+    Vector getVCol(int i);
+    Vector getVRow(int i);
+
+    Matrix copy();
 };
 
 

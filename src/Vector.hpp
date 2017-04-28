@@ -29,7 +29,13 @@ public:
 
     Vector operator+=(Vector another);
 
+    Vector operator-=(Vector another);
+
     Vector operator+(Vector another);
+
+    Number operator[](int i);
+
+    Vector copy();
 
     void printOut(); // Kinda debugging method
 };

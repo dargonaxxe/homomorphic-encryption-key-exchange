@@ -72,3 +72,23 @@ Number Vector::operator*(std::vector<Number> another) {
 
     return total;
 }
+
+Vector Vector::copy() {
+    std::vector<Number> tmp;
+
+    for (int i = 0; i < this->size; i++)
+        tmp.push_back(this->components[i].copy());
+
+    return Vector(this->size, tmp);
+}
+
+Number Vector::operator[](int i) {
+    return this->components[i];
+}
+
+Vector Vector::operator-=(Vector another) {
+    for (int i = 0; i < this->size; i++)
+        this->components[i] -= another.components[i];
+
+    return *this;
+}

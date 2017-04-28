@@ -2,6 +2,7 @@
 // Created by dargonaxxe on 27.04.17.
 //
 
+#include <iostream>
 #include "Matrix.hpp"
 
 Matrix::Matrix() {
@@ -28,7 +29,7 @@ Matrix::Matrix(int height, int width, std::vector<Number> cells) {
 
     for (int i = 0; i < this->height; i++)
         for (int j = 0; j < this->width; j++)
-            this->cells.push_back(Matrix::calcCellNumber(i, j, this->width));
+            this->cells.push_back(cells[Matrix::calcCellNumber(i, j, this->width)]);
 }
 
 Vector Matrix::operator*(Vector another) {
@@ -75,6 +76,50 @@ Vector Matrix::multTransposed(Vector another) {
     std::vector<Number> tmp;
     for (int i = 0; i < this->width; i++)
         tmp.push_back(another * this->getCol(i));
+
+    return Vector(this->width, tmp);
+}
+
+Matrix Matrix::operator*(Matrix another) {
+    std::vector<Number> cells;
+    for (int i = 0; i < this->height; i++)
+        for (int j = 0; j < another.width; j++)
+            cells.push_back(Vector(this->width, this->getRow(i)) * another.getCol(j));
+
+    return Matrix(this->height, another.width, cells);
+}
+
+Number Matrix::operator()(int i, int j) {
+    return this->cells[Matrix::calcCellNumber(i, j, this->width)];
+}
+
+void Matrix::printOut() {
+    std::vector<Number> tmp;
+    for (int i = 0; i < this->height; i++) {
+        tmp = this->getRow(i);
+        for (int j = 0; j < this->width; j++)
+            std::cout << tmp[j].getValue() << " ";
+
+        std::cout << std::endl;
+    }
+}
+
+Matrix Matrix::copy() {
+    std::vector<Number> tmp;
+    for (int i = 0; i < this->width * this->height; i++)
+        tmp.push_back(this->cells[i].copy());
+
+    return Matrix(this->height, this->width, tmp);
+}
+
+Vector Matrix::getVCol(int i) {
+    std::vector<Number> tmp = this->getCol(i);
+
+    return Vector(this->height, tmp);
+}
+
+Vector Matrix::getVRow(int i) {
+    std::vector<Number> tmp = this->getRow(i);
 
     return Vector(this->width, tmp);
 }

@@ -2,35 +2,34 @@
 #include <gmp.h>
 #include "Number.hpp"
 #include "Vector.hpp"
+#include <ctime>
 #include "Matrix.hpp"
 
 
-// TODO: Implement our own linear algebra library cuz we got some troubles with open-source libs
+// TODO: Test data generator class
+
+// TODO: Implement user class
+
+// TODO: Implement session class
 
 
 
 int main() {
-    int k = 4;
-    int t = 4;
-    int n = 6;
+    std::vector<Number> a;
+    for (int i = 0; i < 3 * 3; i++) {
+        a.push_back(Number(14));
+    }
 
-    Vector a(k);
-    Vector b(t);
+    Matrix M(3, 3, a);
 
-    Matrix V(k, n);
-    Matrix W(t, n);
+    Number tmp = a[0].copy();
 
-    Vector x = V.multTransposed(a);
-    Vector y = W.multTransposed(b);
+    M(0, 0) += M(1, 1);
 
-    Vector e = W * x;
-    Vector d = V * y;
 
-    Number key_a = e * b;
-    Number key_b = d * a;
+    M.printOut();
 
-    key_a.printOut();
-    key_b.printOut();
+
 
     return 0;
 }
