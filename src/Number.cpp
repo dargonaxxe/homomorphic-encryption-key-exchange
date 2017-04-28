@@ -16,35 +16,9 @@ Number::Number(signed long int value) {
     mpz_init_set_si(this->value, value);
 }
 
-//Number::Number(unsigned long int value) {
-//    mpz_init_set_ui(this->value, value);
-//}
-
-//Number::Number(double value) {
-//    mpz_init_set_d(this->value, value);
-//}
-
-//Number::Number(mpq_t value) {
-//    mpz_init(this->value);
-//    mpz_set_q(this->value, value);
-//}
-
-//Number::Number(mpf_t value) {
-//    mpz_init(this->value);
-//    mpz_set_f(this->value, value);
-//}
-
-//Number::Number(char *str, int base) {
-//    mpz_init_set_str(this->value, str, base);
-//}
-
 Number::Number(mpz_t value) {
     mpz_init(this->value);
     mpz_set(this->value, value);
-}
-
-Number::~Number() {
-//    mpz_clear(this->value);
 }
 
 unsigned int Number::getUInt() {
@@ -113,17 +87,6 @@ Number Number::operator*(signed long int another) {
     return tmp;
 }
 
-//Number Number::operator*(unsigned long int another) {
-//    mpz_t total;
-//
-//    mpz_init(total);
-//    mpz_mul_ui(total, this->value, another);
-//
-//    Number tmp(total);
-//
-//    return tmp;
-//}
-
 Number Number::operator-() {
     mpz_t total;
 
@@ -147,18 +110,6 @@ bool Number::operator==(Number another) {
     return (mpz_cmp(this->value, another.value) == 0);
 }
 
-//bool Number::operator>(double another) {
-//    return (mpz_cmp_d(this->value, another) > 0);
-//}
-
-//bool Number::operator<(double another) {
-//    return (mpz_cmp_d(this->value, another) < 0);
-//}
-
-//bool Number::operator==(double another) {
-//    return (mpz_cmp_d(this->value, another) == 0);
-//}
-
 bool Number::operator>(signed long int another) {
     return (mpz_cmp_si(this->value, another) > 0);
 }
@@ -170,18 +121,6 @@ bool Number::operator<(signed long int another) {
 bool Number::operator==(signed long int another) {
     return (mpz_cmp_si(this->value, another) == 0);
 }
-
-//bool Number::operator>(unsigned long int another) {
-//    return (mpz_cmp_ui(this->value, another) > 0);
-//}
-
-//bool Number::operator<(unsigned long int another) {
-//    return (mpz_cmp_ui(this->value, another) < 0);
-//}
-
-//bool Number::operator==(unsigned long int another) {
-//    return (mpz_cmp_ui(this->value, another) == 0);
-//}
 
 Number Number::getRandom() {
     if (!Number::rand_state_initialized)
@@ -204,18 +143,6 @@ void Number::initRandState() {
 void Number::printOut() {
     std::cout << this->value << std::endl;
 }
-
-//Number Number::operator=(Number another) {
-//    mpz_set(this->value, another.value);
-//
-//    return *this;
-//}
-
-//Number Number::operator=(long int another) {
-//    mpz_set_si(this->value, another);
-//
-//    return *this;
-//}
 
 Number Number::operator+=(Number another) {
     *this = *this + another;
@@ -282,4 +209,8 @@ std::ostream &operator<<(std::ostream &os, Number& number) {
 
 int Number::size() {
     return mpz_sizeinbase(this->value, 2);
+}
+
+Number::~Number() {
+
 }

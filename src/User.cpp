@@ -55,5 +55,5 @@ void User::setVector(Vector &vector) {
 
 void User::calcKey() {
     this->key = this->secret * this->foreign_open_vector;
-    std::cout << this->key << std::endl;
+//    std::cout << this->key << std::endl;
 }

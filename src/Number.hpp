@@ -17,7 +17,7 @@ private:
 //    Number(double value);
 //    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 18; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 34; // Randomly generated numbers are 512 bit-ish
     mpz_t value;
 public:
     const __mpz_struct *getValue() const;
@@ -87,6 +87,7 @@ public:
 
     void printOut(); // Debugging function tho
     ~Number();
+
 };
 
 

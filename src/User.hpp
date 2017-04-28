@@ -37,7 +37,6 @@ public:
     Matrix& getOrtMatrix();
     Matrix& getOpenMatrix();
     Vector& getVector();
-//    friend Session;
 };
 
 

@@ -17,7 +17,14 @@ int main() {
     int q = 35;
     Session session(n, k, t, p, q);
 
+    clock_t begin = clock();
+
     session.keyExchange();
+
+    clock_t end = clock();
+    double spent_time = (double) (end - begin) / CLOCKS_PER_SEC;
+
+    std::cout << spent_time;
 
     return 0;
 }
