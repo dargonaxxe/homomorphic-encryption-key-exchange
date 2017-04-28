@@ -274,10 +274,12 @@ Number Number::operator/=(Number another) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, Number number) {
-    if (mpz_sgn(number.value) < 0)
-        os << "-";
-    os << number.getUInt();
+std::ostream &operator<<(std::ostream &os, Number& number) {
+    os << number.getValue();
 
     return os;
+}
+
+int Number::size() {
+    return mpz_sizeinbase(this->value, 2);
 }

@@ -17,7 +17,7 @@ private:
 //    Number(double value);
 //    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 4; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 18; // Randomly generated numbers are 512 bit-ish
     mpz_t value;
 public:
     const __mpz_struct *getValue() const;
@@ -81,7 +81,9 @@ public:
 
     Number copy();
 
-    friend std::ostream &operator<<(std::ostream &os, Number number);
+    int size();
+
+    friend std::ostream &operator<<(std::ostream &os, Number& number);
 
     void printOut(); // Debugging function tho
     ~Number();

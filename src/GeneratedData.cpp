@@ -35,8 +35,6 @@ GeneratedData::GeneratedData(int k, int p, int n) {
     Matrix shuffle_matrix = Matrix(p, actual_ort_vectors_amount);
     this->ort_matrix = shuffle_matrix * S_transposed;
 
-//    M.printOut();
-//    l.printOut();
     // It's gaussian method tho
     for (int i = 0; i < k; i++) {
         Vector main_row = M.getVRow(i);
@@ -45,29 +43,11 @@ GeneratedData::GeneratedData(int k, int p, int n) {
 
             Number tmp = M(j, i).copy();
             for (int r = i; r < k; r++) {
-//                std::cout << M(j, r) << " - (" << M(i, r) << " * " << tmp << ") = ";
                 M(j, r) -= M(i, r) * tmp;
-//                std::cout << M(j, r) << std::endl;
             }
-//            std::cout << l[j] << " - (" << l[i] << " * " << tmp << ") = ";
             l[j] -= l[i] * tmp;
-//            std::cout << l[j] << std::endl;
         }
-//        std::cout << M;
-//        std::cout << l;
     } // matrix M now is diagonalized. Now we can calculate the vector a
-
-    for (int i = k - 1; i > 0; i--) {
-        for (int j = i - 1; j >= 0; j --) {
-            Number tmp_scalar = M(j, i).copy();
-            M.getVRow(j) -= M.getVRow(i) * tmp_scalar;
-            l[j] -= l[i] * tmp_scalar;
-        }
-//        std::cout << M;
-//        std::cout << l;
-    }
-
-
 
     this->secret_vector = l;
 }
