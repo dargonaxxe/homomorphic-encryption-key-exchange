@@ -82,26 +82,14 @@ Number Number::operator+(unsigned long int another) {
 }
 
 Number Number::operator-(Number another) {
-    mpz_t total;
+    mpz_t tmp;
 
-    mpz_init(total);
-    mpz_sub(total, this->value, another.value);
+    mpz_init(tmp);
+    mpz_sub(tmp, this->value, another.value);
 
-    Number tmp(total);
-
-    return tmp;
+    return Number(tmp);
 }
 
-Number Number::operator-(unsigned long int another) {
-    mpz_t total;
-
-    mpz_init(total);
-    mpz_sub_ui(total, this->value, another);
-
-    Number tmp(total);
-
-    return tmp;
-}
 
 Number Number::operator*(Number another) {
     mpz_t total;
@@ -217,17 +205,17 @@ void Number::printOut() {
     std::cout << this->value << std::endl;
 }
 
-Number Number::operator=(Number another) {
-    mpz_set(this->value, another.value);
+//Number Number::operator=(Number another) {
+//    mpz_set(this->value, another.value);
+//
+//    return *this;
+//}
 
-    return *this;
-}
-
-Number Number::operator=(long int another) {
-    mpz_set_si(this->value, another);
-
-    return *this;
-}
+//Number Number::operator=(long int another) {
+//    mpz_set_si(this->value, another);
+//
+//    return *this;
+//}
 
 Number Number::operator+=(Number another) {
     *this = *this + another;
@@ -267,7 +255,7 @@ Number Number::copy() {
 }
 
 Number Number::operator-=(Number another) {
-    *this = *this - another;
+    mpz_sub(this->value, this->value, another.value);
 
     return *this;
 }
@@ -284,4 +272,11 @@ Number Number::operator/=(Number another) {
     *this = *this / another;
 
     return *this;
+}
+
+std::ostream &operator<<(std::ostream &os, Number number) {
+
+    os << number.getSInt();
+
+    return os;
 }

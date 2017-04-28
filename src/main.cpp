@@ -4,6 +4,7 @@
 #include "Vector.hpp"
 #include <ctime>
 #include "Matrix.hpp"
+#include "GeneratedData.hpp"
 
 
 // TODO: Test data generator class
@@ -15,20 +16,16 @@
 
 
 int main() {
-    std::vector<Number> a;
-    for (int i = 0; i < 3 * 3; i++) {
-        a.push_back(Number(14));
-    }
+    int k = 3;
+    int n = 6;
+    int p = 2;
 
-    Matrix M(3, 3, a);
-
-    Number tmp = a[0].copy();
-
-    M(0, 0) += M(1, 1);
+    GeneratedData data_a(k, p, n);
+//
+    data_a.getSecretVector().printOut();
 
 
-    M.printOut();
-
+    Number a = Number();
 
 
     return 0;

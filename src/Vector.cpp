@@ -43,6 +43,8 @@ Vector Vector::operator*(Number another) {
 Vector Vector::operator+=(Vector another) {
     for (int i = 0; i < this->size; i++)
         this->components[i] += another.components[i];
+
+    return *this;
 }
 
 Vector Vector::operator+(Vector another) {
@@ -91,4 +93,8 @@ Vector Vector::operator-=(Vector another) {
         this->components[i] -= another.components[i];
 
     return *this;
+}
+
+void Vector::setComponent(int i, Number number) {
+    this->components[i] = number;
 }

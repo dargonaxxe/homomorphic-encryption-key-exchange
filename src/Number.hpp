@@ -3,6 +3,7 @@
 //
 
 #include <gmp.h>
+#include <ostream>
 
 // This class is a wrap above GMP library. We need it to integrate GMP into MTL4
 // Objects of this class contain integer long numbers of mpz data type
@@ -16,7 +17,7 @@ private:
 //    Number(double value);
 //    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 1024 * 32; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 4; // Randomly generated numbers are 512 bit-ish
     mpz_t value;
 public:
     const __mpz_struct *getValue() const;
@@ -42,7 +43,6 @@ public:
 
     Number operator-();
     Number operator-(Number another);
-    Number operator-(unsigned long int another);
 
     Number operator*(Number another);
     Number operator*(signed long int another);
@@ -63,8 +63,7 @@ public:
     bool operator==(signed long int another);
 //    bool operator==(unsigned long int another);
 
-    Number operator=(Number another);
-    Number operator=(long int another);
+//    Number operator=(Number another);
 
     Number operator+=(Number another);
     Number operator+=(long int another);
@@ -81,6 +80,8 @@ public:
     static Number getRandom();
 
     Number copy();
+
+    friend std::ostream &operator<<(std::ostream &os, Number number);
 
     void printOut(); // Debugging function tho
     ~Number();

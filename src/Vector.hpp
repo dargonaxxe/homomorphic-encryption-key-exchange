@@ -37,6 +37,8 @@ public:
 
     Vector copy();
 
+    void setComponent(int i, Number number);
+
     void printOut(); // Kinda debugging method
 };
 

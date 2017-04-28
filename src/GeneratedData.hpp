@@ -19,6 +19,9 @@ private:
 
 public:
     GeneratedData(int k, int p, int n);
+    Vector getSecretVector();
+    Matrix getOrtMatrix();
+    Matrix getOpenMatrix();
 };
 
 
