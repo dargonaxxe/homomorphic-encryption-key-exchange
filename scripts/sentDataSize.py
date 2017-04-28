@@ -1,6 +1,6 @@
 
 import random as rand
-number_size = 1024 // 8 # used units are bytes
+number_size = 512 // 8 # used units are bytes
 
 
 n = 50
@@ -26,16 +26,41 @@ def log_2(number):
 		number //= 2
 	return total
 
-alice_total = calculateMessageSize(k, n, p, t, number_size)
+msg = "With parameters:\n"  
+msg += "n = " + str(n) + "\n"
+msg += "k = " + str(k) + "\n" 
+msg += "t = " + str(t) + "\n" 
+msg += "p = " + str(p) + "\n" 
+msg += "q = " + str(q) + "\n"
+msg += "number size limit = " + str(number_size) + " bytes\n"
+
+print(msg)
+
+total = 0
+amount_of_tests = 1000
+for i in range(amount_of_tests):
+	total += rand.randint(0, 2 ** (number_size * 8))
+total //= amount_of_tests
+avg_number_length = log_2(total)
+
+msg = "For " + str(amount_of_tests) + " tests average length of number is " + str(avg_number_length) + " bits."
+
+
+print(msg)
+
+alice_total = calculateMessageSize(k, n, p, t, avg_number_length // 8)
 msg = "Alice will send " + str(alice_total) + " bytes through the open channel."
 print(msg)
 
-bob_total = calculateMessageSize(t, n, q, k, number_size)
+bob_total = calculateMessageSize(t, n, q, k, avg_number_length // 8)
 msg = "Bob will send " + str(bob_total) + " bytes through the open channel."
 print(msg)
 
 total = 0
 amount_of_tests = 100
+
+msg = "\nFor " + str(amount_of_tests) + " tests "
+
 for i in range(amount_of_tests):
 	tmp = 0
 	for j in range(2 * n):
@@ -44,5 +69,5 @@ for i in range(amount_of_tests):
 
 total //= amount_of_tests # it's average key now
 key_length = log_2(total)
-msg = "The average size of key is " + str(key_length) + " bits."
+msg += "the average size of key is " + str(key_length) + " bits."
 print(msg)
