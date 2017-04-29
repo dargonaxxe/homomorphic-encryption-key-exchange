@@ -55,20 +55,13 @@
 		JetBrains Research Cryptographic Lab \\
 		dargonaxxe@gmail.com	
 	}
-	
-	\and
-	\IEEEauthorblockN{Bogdan Lukin}
-	\IEEEauthorblockA{
-		JetBrains Research Cryptographic Lab \\
-		2ZeroSix1@gmail.com
-	}
-	
-	\and 
-	\IEEEauthorblockN{Nikita Sarin}
-	\IEEEauthorblockA{
-		Novosibirsk State University \\
-		idnikitasarin@gmail.com
-	}
+
+%	\and 
+%	\IEEEauthorblockN{Nikita Sarin}
+%	\IEEEauthorblockA{
+%		Novosibirsk State University \\
+%		idnikitasarin@gmail.com
+%	}
 }
 
 % for over three affiliations, or if they all won't fit within the width
@@ -94,10 +87,9 @@
 
 \begin{document}
 	\maketitle              % typeset the title of the contribution
-
-	\begin{abstract}
-		Most of nowadays cryptosystems rely on mathematical problems which are hard for classical computers but can be solved on quantum computers using Shore's algorithm. Accordingly, we consider simple postquantum key exchange algorithm based on homomorphic encryption. Later on, we find the vulnerability and come up with the improvement which grants us security from reviewed type of attack. In the end of the paper, we consider the implementation of improved algorithm and provide some tests. Presented algorithm and implementation are ready to be used in a new version of TLS or SSL protocol. 
-	\end{abstract}
+	
+	\input{abstract.tex}
+	
 	\keywords{\textbf{\textit{homomorphic encryption; linear algebra; key exchange; postquantum cryptography} } }	
 	
 	\input{introduction.tex}
@@ -126,10 +118,16 @@ The conference cite contains also the last version of this document and its sour
 
 \subsection{Paper size}
 Please, indicate in the preamble a4 paper size in the following way:
+\input{performance_table.tex}
+
+
+
+
 \begin{verbatim}
 \documentclass[a4paper, conference]
     {IEEEtran}
 \end{verbatim}
+
 
 \subsection{Polish accent ``ogonek''}
 To make the polish accent {\k \ } (``ogonek'') available use package \verb|fontenc| with the option \verb|OT4,T1|
@@ -181,19 +179,7 @@ Prepare your figures using vector graphics and converting it to standard eps for
 Pay attention that the figure caption is placed \emph{below} the figure, while the table caption is placed \emph{above} the table (cf.~table~\ref{table}). Figures or tables may span both columns, if necessary (use \texttt{figure*} or \texttt{table*} environments).
 
 
-\begin{table*}[tbp]
-\caption{Defining characteristics of five early digital computers}\label{table}
-\centering
-\begin{tabular}{|@{\vrule width0ptheight9pt\enspace}l|c|c|c|c|c|c|c|}\hline
-\hfil\bf Computer&\bf First operation&\bf Place& \bf Decimal/Binary&\bf Electronic&\bf Programmable&\bf Turing complete\\\hline
-Zuse Z3&May 1941&Germany&binary&No&By punched film stock&Yes (1998)\\\hline
-Atanasoff-Berry Computer&Summer 1941&USA&binary&Yes&No&No\\\hline
-Colossus&1943--1944&UK&binary&Yes&Partially, by rewiring&No\\\hline
-Harvard Mark I--IBM ASCC&1944&USA&decimal&No&By punched paper tape&Yes (1998)\\\hline
-\multirow{2}{*}{ENIAC}&1944&USA&decimal&Yes&Partially, by rewiring&Yes\\\cline{2-7}
-&1948&USA&decimal&Yes&By Function Table ROM&Yes\\\hline
-\end{tabular}
-\end{table*}
+
 
 Position figures and tables at the tops and bottoms of columns.  Avoid placing them in the middle of columns.  Large figures and tables my span across both columns.  Figure captions should be below the figures; table captions should be above the tables.  Avoid placing figures and tables before their first mention in the text.  Use the abbreviation ``Fig.~1,'' even at the beginning of a sentence.
 
