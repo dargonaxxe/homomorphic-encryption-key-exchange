@@ -6,9 +6,9 @@
 		\item For each $ \textbf{x} \in \mathbb{Z}^n, \alpha \in \mathbb{Z} $ the following is true $ \alpha \textbf{x} = (\alpha x_1, \dots, \alpha x_n) $.
 	\end{enumerate}
 	Moreover, for $ \textbf{x}, \textbf{y} \in \mathbb{Z}^n $ let's call $ \textbf{x} \cdot \textbf{y} = \sum\limits_{i = 1}^n x_i y_i $ a \textit{dot product}. \\
-	Let $ \chi $ be a probability distribution over $ R $. Accordingly, $ x \leftarrow \chi $ denotes sampling $ x \in R $ according to $ \chi $. Moreover, for a finite set $ A $, let $ U(A) $ denote the uniform distribution on $ A $ and $ x \leftarrow U(A) $ sampling $ x $ unifromly at random from $ A $.
+	Let $ \chi $ be a probability distribution over $ \mathbb{Z} $. Accordingly, $ x \leftarrow \chi $ denotes sampling $ x \in \mathbb{Z} $ according to $ \chi $. Moreover, for $ a, b \in \mathbb{Z}, a < b $ let $ x \leftarrow U_{a, b} $ denote sampling $ x $ uniformly from $ \{a, a+1, \dots, b\} $. Moreover, let $ \textbf{x} \leftarrow U_{a, b}^n $ denote sampling $ \textbf{x} $ in the following way: $ \textbf{x} = (x_1 \leftarrow U_{a, b}, \dots, x_n \leftarrow U_{a, b} ). $
 	\begin{definition}{Homomorphic ecnryption}
-		Let $ \textbf{x} \in \mathbb{Z}^n $ be a fixed vector for some $ n \in \mathbb{N} $. Moreover, let's consider that $ \textbf{x} $ has \textit{at least} 2 coprime components. \\
+		Let $ \textbf{x} \in \mathbb{Z}^n $ be a fixed $ n $-dimensional integer vector for some $ n \in \mathbb{N} $. Moreover, let's consider that $ \textbf{x} $ has \textit{at least} 2 coprime components. \\
 		For number $ d \in \mathbb{Z} $ and vector $ \textbf{x} $ we will call a vector $ \textbf{a} \in \mathbb{Z}^n $ an \textit{interpretation} if $ \textbf{x} \cdot \textbf{a} = d $. \\
 		Therefore we have a mapping $ \Phi_{\textbf{x}}: \mathbb{Z} \rightarrow \mathbb{Z}^n $. Easy to notice that this mapping has the following properties:
 		\begin{enumerate}
