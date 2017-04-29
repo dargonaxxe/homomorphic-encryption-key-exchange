@@ -149,3 +149,8 @@ long Matrix::size() {
 
     return total;
 }
+
+void Matrix::clear() {
+    for (Number number : this->cells)
+        number.clear();
+}

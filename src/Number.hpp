@@ -12,10 +12,11 @@
 class Number {
 private:
     Number(mpz_t value);
-    static const unsigned long border = 26; // Randomly generated numbers has at most such amount of numbers
     mpz_t value;
 public:
+
     const __mpz_struct *getValue() const;
+    static unsigned long border; // Randomly generated numbers has at most such amount of numbers
 
 private:
     static gmp_randstate_t rand_state;
@@ -65,6 +66,8 @@ public:
     Number copy();
 
     int size();
+
+    void clear();
 
     friend std::ostream &operator<<(std::ostream &os, Number& number);
 

@@ -44,6 +44,8 @@ public:
 
     void setComponent(int i, Number number);
 
+    void clear();
+
     void printOut(); // Kinda debugging method
 };
 

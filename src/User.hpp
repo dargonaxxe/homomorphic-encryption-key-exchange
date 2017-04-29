@@ -18,12 +18,12 @@ private:
     Vector secret;
     Matrix self_open_matrix;
     Matrix self_ort_matrix;
-    Matrix foreign_open_matrix;
-    Matrix foreign_ort_matrix;
     Vector enc_secret;
     Vector self_open_vector;
-    Vector foreign_open_vector;
     Number key;
+    Matrix foreign_open_matrix;
+    Matrix foreign_ort_matrix;
+    Vector foreign_open_vector;
 
 public:
     User();
@@ -38,6 +38,7 @@ public:
     Matrix& getOpenMatrix();
     Vector& getVector();
     long getKeySize();
+    void clear();
 };
 
 

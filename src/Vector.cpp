@@ -113,3 +113,8 @@ long int Vector::getSize() {
 
     return total;
 }
+
+void Vector::clear() {
+    for (Number number : this->components)
+        number.clear();
+}

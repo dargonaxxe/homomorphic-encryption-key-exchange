@@ -55,9 +55,17 @@ void User::setVector(Vector &vector) {
 
 void User::calcKey() {
     this->key = this->secret * this->foreign_open_vector;
-    std::cout << this->key << std::endl;
 }
 
 long User::getKeySize() {
     return this->key.size();
+}
+
+void User::clear() {
+    this->secret.clear();
+    this->self_open_matrix.clear();
+    this->self_ort_matrix.clear();
+    this->self_open_vector.clear();
+    this->enc_secret.clear();
+    this->key.clear();
 }

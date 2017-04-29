@@ -51,6 +51,8 @@ public:
     Vector getVCol(int i);
     Vector getVRow(int i);
 
+    void clear();
+
     long size();
 
     Matrix copy();

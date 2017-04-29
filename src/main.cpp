@@ -15,16 +15,15 @@ int main() {
     int t = 40;
     int p = 30;
     int q = 35;
-    Session session(n, k, t, p, q);
 
-//    clock_t begin = clock();
+    Session::divided.seekp(std::ios_base::end);
+    Session::together.seekp(std::ios_base::end);
+
+    Session session = Session(n, k, t, p, q);
 
     session.keyExchange();
 
-//    clock_t end = clock();
-//    double spent_time = (double) (end - begin) / CLOCKS_PER_SEC;
 
-//    std::cout << spent_time;
 
     return 0;
 }

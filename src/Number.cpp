@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Number.hpp"
 
+unsigned long Number::border = 15;
+
 bool Number::rand_state_initialized = false;
 gmp_randstate_t Number::rand_state = {};
 
@@ -213,4 +215,8 @@ int Number::size() {    // used units are bits
 
 Number::~Number() {
 
+}
+
+void Number::clear() {
+    mpz_clear(this->value);
 }
