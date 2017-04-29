@@ -5,19 +5,14 @@
 #include <gmp.h>
 #include <ostream>
 
-// This class is a wrap above GMP library. We need it to integrate GMP into MTL4
-// Objects of this class contain integer long numbers of mpz data type
-
 #ifndef HOMOMORPHIC_ENC_NUMBER_HPP
 #define HOMOMORPHIC_ENC_NUMBER_HPP
 
 
 class Number {
 private:
-//    Number(double value);
-//    Number(unsigned long int value);
     Number(mpz_t value);
-    static const unsigned long border = 34; // Randomly generated numbers are 512 bit-ish
+    static const unsigned long border = 26; // Randomly generated numbers has at most such amount of numbers
     mpz_t value;
 public:
     const __mpz_struct *getValue() const;
@@ -29,9 +24,6 @@ private:
 public:
     Number();
     Number(signed long int value);
-//    Number(mpq_t value);
-//    Number(mpf_t value);
-//    Number(char* str, int base);
 
 
     unsigned int getUInt();
@@ -46,24 +38,15 @@ public:
 
     Number operator*(Number another);
     Number operator*(signed long int another);
-//    Number operator*(unsigned long int another);
 
     bool operator>(Number another);
-//    bool operator>(double another);
     bool operator>(signed long int another);
-//    bool operator>(unsigned long int another);
 
     bool operator<(Number another);
-//    bool operator<(double another);
     bool operator<(signed long int another);
-//    bool operator<(unsigned long int another);
 
     bool operator==(Number another);
-//    bool operator==(double another);
     bool operator==(signed long int another);
-//    bool operator==(unsigned long int another);
-
-//    Number operator=(Number another);
 
     Number operator+=(Number another);
     Number operator+=(long int another);

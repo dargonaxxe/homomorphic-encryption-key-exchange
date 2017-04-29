@@ -105,3 +105,11 @@ std::ostream &operator<<(std::ostream &os, const Vector &vector) {
         std::cout << number << std::endl;
     return os;
 }
+
+long int Vector::getSize() {
+    long int total = 0;
+    for (Number number : this->components)
+        total += number.size();
+
+    return total;
+}

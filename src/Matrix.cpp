@@ -141,3 +141,11 @@ int Matrix::getHeight() const {
 int Matrix::getWidth() const {
     return width;
 }
+
+long Matrix::size() {
+    long total = 0;
+    for (Number number : this->cells)
+        total += number.size();
+
+    return total;
+}

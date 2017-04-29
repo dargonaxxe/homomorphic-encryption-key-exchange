@@ -40,6 +40,8 @@ public:
 
     Vector copy();
 
+    long int getSize();
+
     void setComponent(int i, Number number);
 
     void printOut(); // Kinda debugging method

@@ -24,7 +24,7 @@ GeneratedData::GeneratedData(int k, int p, int n) {
     for (int i = 0; i < actual_ort_vectors_amount; i++) {
         int tmp_index = rand() % k;
 
-        l.setComponent(tmp_index, Number(1 - 1));
+        l[tmp_index] = Number((signed long) 0);
         std::vector<Number> tmp_array = M.getRow(tmp_index);
 
         for (int j = 0; j < k; j++)

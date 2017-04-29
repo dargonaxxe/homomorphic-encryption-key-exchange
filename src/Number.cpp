@@ -207,7 +207,7 @@ std::ostream &operator<<(std::ostream &os, Number& number) {
     return os;
 }
 
-int Number::size() {
+int Number::size() {    // used units are bits
     return mpz_sizeinbase(this->value, 2);
 }
 

@@ -37,6 +37,7 @@ public:
     Matrix& getOrtMatrix();
     Matrix& getOpenMatrix();
     Vector& getVector();
+    long getKeySize();
 };
 
 

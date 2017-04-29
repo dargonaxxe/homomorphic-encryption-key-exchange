@@ -16,11 +16,14 @@ private:
     int q;
     User Bob;
     User Alice;
+    static long int channelTransmissionSpeed; // Let's cosider that 50 Mbps is
+                                              // an average data transmission speed
 
     void matrixExchange();
     void openVectorCalculation();
     void openVectorExchange();
     void calculateKey();
+    static double calcTransmissionTime(long size);
 public:
 
     Session();
