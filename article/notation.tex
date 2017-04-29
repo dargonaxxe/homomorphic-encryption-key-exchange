@@ -1,6 +1,11 @@
 \section{Notation}
 	In this section we will describe the notation that will be used futher. \\
-	Let $ \mathbb{Z} $ be a ring of integer numbers. Let $ \mathbb{Z}_q = \mathbb{Z} / q\mathbb{Z} $ be the quotient ring of any integer $ q \geq 1 $. Let $ q $ be some fixed integer number such that $ q \geq 1 $ i.e. $ q = 2^{64} $. Let $ R = \mathbb{Z}_q $. Accordingly, if $ k \in \mathbb{N} $, let $ R^k $ denote the set of vectors with $ k $ components from $ R $ i.e.  $ R^1 = R $. For $ \textbf{a}, \textbf{b} \in R^k, \textbf{a} = (a_1, \dots, a_k), \textbf{b} = ( b_1, \dots, b_k ) $ let's denote $ \textbf{a} \cdot \textbf{b} = \sum_{i = 1}^{k} a_i b_i $ as a \textit{dot product}. \\
+	Let $ \mathbb{Z} $ be a ring of integer numbers. For $ n \in \mathbb{N} $ let's call $ \textbf{a} = (a_1, \dots, a_n) $ \textit{$ n $-dimensional integer vector} if $ \forall i \in \{1, \dots, n\} a_i \in \mathbb{Z} $. For $ n \in \mathbb{N} $ let $ \mathbb{Z}^n $ denote the set of all possible $ n $-dimensional integer vectors. Moreover, it's assumed that $ n $-dimensional vectors have the following properties:
+	\begin{enumerate}
+		\item For each pair $ \textbf{x}, \textbf{y} \in \mathbb{Z}^n $  the following is true $ \textbf{x} + \textbf{y} = (x_1 + y_1, \dots, x_n + y_n) $.
+		\item For each $ \textbf{x} \in \mathbb{Z}^n, \alpha \in \mathbb{Z} $ the following is true $ \alpha \textbf{x} = (\alpha x_1, \dots, \alpha x_n) $.
+	\end{enumerate}
+	Moreover, for $ \textbf{x}, \textbf{y} \in \mathbb{Z}^n $ let's call $ \textbf{x} \cdot \textbf{y} = \sum\limits_{i = 1}^n x_i y_i $ a \textit{dot product}. \\
 	Let $ \chi $ be a probability distribution over $ R $. Accordingly, $ x \leftarrow \chi $ denotes sampling $ x \in R $ according to $ \chi $. Moreover, for a finite set $ A $, let $ U(A) $ denote the uniform distribution on $ A $ and $ x \leftarrow U(A) $ sampling $ x $ unifromly at random from $ A $.
 	\begin{definition}{Homomorphic ecnryption}
 		Let $ \textbf{x} \in \mathbb{Z}^n $ be a fixed vector for some $ n \in \mathbb{N} $. Moreover, let's consider that $ \textbf{x} $ has \textit{at least} 2 coprime components. \\
@@ -12,4 +17,5 @@
 		\end{enumerate}
 		This mapping is called \textit{homomorphic encryption}.
 	\end{definition}
+
 		
