@@ -1,11 +1,20 @@
 \section{Homomorphic encryption based key exchange}
 	In this section we represent the key exchange algorithm. We suppose that 2 users -- Alice (server) and Bob (client) decides to get a common key. Moreover, we suppose that both users trust each other (Authentication is completed) and both users know the value of $ k \in \mathbb{N} $. 
 	\begin{enumerate}
-		\item Alice chooses the number $ n \in \mathbb{N} $ and the secret vector $ \textbf{x} \in \mathbb{Z}^n $, the set of vectors $ \textbf{a}_1, \dots, \textbf{a}_k \in \mathbb{Z}^n $. Then Alice calculates $ d_1 = \textbf{a}_1 \cdot \textbf{x}, \dots, d_k = \textbf{a}_k \cdot \textbf{x} $. In addition, Alice chooses the number $ p \in \mathbb{N} $ and finds the set of vectors $ \textbf{s}_1, \dots, \textbf{s}_p \in \mathbb{Z}^n : \forall i \in \{1, \dots, p\} \textbf{s}_i \cdot \textbf{x} = 0 $. Alice sends $ \textbf{a}_1, \dots, \textbf{a}_k $, $ \textbf{s}_1, \dots, \textbf{s}_p $ to Bob.
-		\item Bob chooses the number $ m \in \mathbb{N} $ and the secret vector $ \textbf{y} \in \mathbb{Z}^m $, the set of vectors $ \textbf{b}_1, \dots, \textbf{b}_k \in \mathbb{Z}^m $. Then Bob calculates $ h_1 = \textbf{b}_1 \cdot \textbf{y}, \dots, \textbf{h}_k = \textbf{b}_k \cdot \textbf{y} $. In addition, Bob chooses the number $ q \in \mathbb{N} $ and finds the set of vectors $ \textbf{r}_1, \dots, \textbf{r}_q \in \mathbb{Z}^m : \forall i \in \{1, \dots, q\} \textbf{r}_i \cdot \textbf{y} = 0 $. Bob sends $ \textbf{b}_1, \dots, \textbf{b}_k $, $ \textbf{r}_1, \dots, \textbf{r}_q $ to Alice.
-		\item Alice calculates $ \textbf{v} = d_1 \textbf{b}_1 + \dots + d_k \textbf{b}_k + \mu_1 \textbf{r}_1 + \dots + \mu_q \textbf{r}_q $, where $ \mu_1, \dots, \mu_q $ are arbitrarily chosen integer numbers. Alice sends $ \textbf{v} $ to Bob.
-		\item Bob calculates $ \textbf{w} = h_1 \textbf{a}_1 + \dots + h_k \textbf{a}_k + \lambda_1 \textbf{s}_1 + \dots + \lambda_p \textbf{s}_p $, where $ \lambda_1, \dots, \lambda_p $ are arbitrarily chosen integer numbers. Bob sends $ \textbf{w} $ to Alice.
+		\setcounter{enumi}{-1}
+		\item Alice and Bob, together, choose $ z, z' \in \mathbb{Z} $ such that $ z < z' $ and number $ n \in \mathbb{N} $.
+		\item Alice chooses the number $ n \in \mathbb{N} $ and the secret vector $ \textbf{x} \leftarrow U_{z, z'}^n $, the set of vectors $ \textbf{a}_1 \leftarrow U_{z, z'}^n, \dots, \textbf{a}_k \leftarrow U_{z, z'}^n $. Then Alice calculates $ d_1 = \textbf{a}_1 \cdot \textbf{x}, \dots, d_k = \textbf{a}_k \cdot \textbf{x} $. In addition, Alice chooses the number $ p \in \mathbb{N} $ and finds the set of vectors $ \textbf{s}_1, \dots, \textbf{s}_p \in \mathbb{Z}^n : \forall i \in \{1, \dots, p\} \textbf{s}_i \cdot \textbf{x} = 0 $. Alice sends $ \textbf{a}_1, \dots, \textbf{a}_k $, $ \textbf{s}_1, \dots, \textbf{s}_p $ to Bob.
+		\item Bob chooses the number $ m \in \mathbb{N} $ and the secret vector $ \textbf{y} \leftarrow U_{z, z'}^m $, the set of vectors $ \textbf{b}_1 \leftarrow U_{z, z'}^m, \dots, \textbf{b}_k \leftarrow U_{z, z'}^m $. Then Bob calculates $ h_1 = \textbf{b}_1 \cdot \textbf{y}, \dots, \textbf{h}_k = \textbf{b}_k \cdot \textbf{y} $. In addition, Bob chooses the number $ q \in \mathbb{N} $ and finds the set of vectors $ \textbf{r}_1, \dots, \textbf{r}_q \in \mathbb{Z}^m : \forall i \in \{1, \dots, q\} \textbf{r}_i \cdot \textbf{y} = 0 $. Bob sends $ \textbf{b}_1, \dots, \textbf{b}_k $, $ \textbf{r}_1, \dots, \textbf{r}_q $ to Alice.
+		\item Alice calculates $ \textbf{v} = d_1 \textbf{b}_1 + \dots + d_k \textbf{b}_k + \mu_1 \textbf{r}_1 + \dots + \mu_q \textbf{r}_q $, where $ \mu_1 \leftarrow U_{z, z'}, \dots, \mu_q \leftarrow U_{z, z'} $. Alice sends vector $ \textbf{v} $ to Bob.
+		\item Bob calculates $ \textbf{w} = h_1 \textbf{a}_1 + \dots + h_k \textbf{a}_k + \lambda_1 \textbf{s}_1 + \dots + \lambda_p \textbf{s}_p $, where $ \lambda_1 \leftarrow U_{z, z'}, \dots, \lambda_p \leftarrow U_{z, z'}$. Bob sends vector $ \textbf{w} $ to Alice.
 		\item Alice calculates $ l = \textbf{w} \cdot \textbf{x} $.
 		\item Bob calculates $ t = \textbf{v} \cdot \textbf{y} $.
 	\end{enumerate}
-	Let's prove that $ l = t $.
+	Let's prove that $ l = t $. 
+	\begin{center}
+		$ l = \textbf{w} \cdot \textbf{x} = (h_1 \textbf{a}_1 + \dots + h_k \textbf{a}_k + \lambda_1 \textbf{s}_1 + \dots + \lambda_p \textbf{s}_p) \cdot \textbf{x} = (h_1 \textbf{a}_1 \cdot \textbf{x} + \dots + h_k \textbf{a}_k \cdot \textbf{x}) + (\lambda_1 \textbf{s}_1 \cdot \textbf{x} + \dots + \lambda_p \textbf{s}_p \cdot \textbf{x}) = h_1 \textbf{a}_1 \cdot \textbf{x} + \dots + h_k \textbf{a}_k \cdot \textbf{x} = h_1 d_1 + \dots + h_k d_k $ \\
+		\hfill \\
+		$ t = \textbf{v} \cdot \textbf{y} = (d_1 \textbf{b}_1 + \dots + d_k \textbf{b}_k + \mu_1 \textbf{r}_1 + \dots + \mu_q \textbf{r}_q) \cdot \textbf{y} = (d_1 \textbf{b}_1 \cdot \textbf{y} + \dots + d_k \textbf{b}_k \cdot \textbf{y}) + (\mu_1 \textbf{r}_1 \cdot \textbf{y} + \dots + \mu_q \textbf{r}_q \cdot \textbf{y}) = d_1 \textbf{b}_1 \cdot \textbf{y} + \dots + d_k \textbf{b}_k \cdot \textbf{y} = d_1 h_1 + \dots + d_k h_k $
+	\end{center}
+	$l = q$. Therefore key exchange is accomplished.
+	 
