@@ -1,10 +1,10 @@
 \section{MITM passive attack}
-In this section we estimate how successful might \textit{Man In The Middle} (MITM) passive attack can be. Passive means that adversary can't edit the data transmitted by Alice and Bob. \\
-An adversary has vectors $ \textbf{a}_1, \dots, \textbf{a}_k, \textbf{b}_1, \dots, \textbf{b}_k $, $ \textbf{s}_1, \dots, \textbf{s}_p, \textbf{r}_1, \dots, \textbf{r}_q $. Also the following system of equations is known by adversary:
+In this section we estimate how successful a \textit{Man In The Middle} (MITM) passive attack can be. Passive means that an adversary can't edit the data transmitted by Alice and Bob. \\
+An adversary has vectors $ \textbf{a}_1, \dots, \textbf{a}_k, \textbf{b}_1, \dots, \textbf{b}_k $, $ \textbf{s}_1, \dots, \textbf{s}_p, \textbf{r}_1, \dots, \textbf{r}_q $. Also, the following system of equations is known by adversary:
 \begin{center}
 	$\textbf{w} = (\textbf{b}_1 \cdot \textbf{y}) \textbf{a}_1 + \dots + (\textbf{b}_k \cdot \textbf{y}) \textbf{a}_k + \lambda_1 \textbf{s}_1 + \dots + \lambda_p \textbf{s}_p$ \\
 	$ \textbf{v} = (\textbf{a}_1 \cdot \textbf{x}) \textbf{b}_1 + \dots + (\textbf{a}_k \cdot \textbf{x}) \textbf{b}_k + \mu_1 \textbf{r}_1 + \dots + \mu_q \textbf{r}_q $ \\
 	$\textbf{s}_1 \cdot \textbf{x} = 0, \dots, \textbf{s}_p \cdot \textbf{x} = 0$ \\
 	$\textbf{r}_1 \cdot \textbf{y} = 0, \dots, \textbf{r}_q \cdot \textbf{y} = 0 $
 \end{center}
-Choosing proper values for $ p, q, k, m, n $ users can make the system underdetermined. Hence the needed solution can't be found by adversary. To improve algorithm users can substantially increase dimension using sparse vectors. 
+Choosing proper values for $ p, q, k, m, n $, users can make the system underdetermined. Hence the needed solution can't be found by adversary. To improve the algorithm users can substantially increase dimension using sparse vectors. 
