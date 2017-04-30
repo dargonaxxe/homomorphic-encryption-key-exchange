@@ -1,0 +1,12 @@
+\section{Implementation and performance}
+	We implemented shown algorithm using C++ programming laguage. Implementation\footnote{\href{https://github.com/dargonaxxe/homomorphic-encryption-key-exchange}{github.com}} uses open source long arithmetics library GNU MP (GMP). The values for $ k, n, m, p, q $ are fixed: $ k = 60, n = 45, m = 40, p = 30, q = 35 $. Table 1 represents the average results of 400 tests being executed on the single PC with CPU Intel Core i7-640M Processor with 4M Cache, 2.80 GHz. Here what represents each row:
+	\begin{enumerate}
+		\item Key size -- amount of bits required to contain the key in memory. 
+		\item Time spent on initialization -- time taken by Alice to perform part 1 of algorithm (part 2 for Bob respectively).
+		\item Time spent on calculation -- time taken by Alice to perform calculations from part 3 and 5 (4 and 6 for Bob respectively).
+		\item Time spent on data transmission -- this time is a theoretical value. We calculated it assuming that both users have stable Internet connection of 50 Mbps.
+		\item Time spent on key exchange with preparation -- time taken by user to perform the key exchange assuming that user already generated the data from part 1-2. 
+		\item Time spen on key exchange without preparation -- the opposite, time taken by user to perform key exchange with data generation.
+		\item Amount of transmitted data -- size of messages sent by users. 
+	\end{enumerate}
+	\input{performance_table.tex}
