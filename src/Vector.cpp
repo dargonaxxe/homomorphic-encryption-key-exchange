@@ -27,8 +27,10 @@ Vector::Vector(int size, std::vector<Number> components) {
 Number Vector::operator*(Vector another) {
     Number total = Number(1 - 1);
 
-    for (int i = 0; i < this->size; i++)
-        total += this->components[i] * another.components[i];
+    for (int i = 0; i < this->size; i++) {
+        Number tmp = (*this)[i] * another[i];
+        total += tmp;
+    }
 
     return total;
 }
@@ -70,8 +72,10 @@ void Vector::printOut() {
 
 Number Vector::operator*(std::vector<Number> another) {
     Number total = Number(1 - 1);
-    for (int i = 0; i < this->size; i++)
-        total += another[i] * this->components[i];
+    for (int i = 0; i < this->size; i++) {
+        Number tmp = another[i] * (*this)[i];
+        total += tmp;
+    }
 
     return total;
 }

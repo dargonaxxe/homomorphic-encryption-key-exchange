@@ -35,7 +35,7 @@ double Number::getDouble() {
     return mpz_get_d(this->value);
 }
 
-Number Number::operator+(Number another) {
+Number Number::operator+(Number& another) {
     mpz_t total;
 
     mpz_init(total);
@@ -57,7 +57,7 @@ Number Number::operator+(unsigned long int another) {
     return tmp;
 }
 
-Number Number::operator-(Number another) {
+Number Number::operator-(Number& another) {
     mpz_t tmp;
 
     mpz_init(tmp);
@@ -67,7 +67,7 @@ Number Number::operator-(Number another) {
 }
 
 
-Number Number::operator*(Number another) {
+Number Number::operator*(Number& another) {
     mpz_t total;
 
     mpz_init(total);
@@ -100,15 +100,15 @@ Number Number::operator-() {
     return tmp;
 }
 
-bool Number::operator<(Number another) {
+bool Number::operator<(Number& another) {
     return (mpz_cmp(this->value, another.value) < 0);
 }
 
-bool Number::operator>(Number another) {
+bool Number::operator>(Number& another) {
     return (mpz_cmp(this->value, another.value) > 0);
 }
 
-bool Number::operator==(Number another) {
+bool Number::operator==(Number& another) {
     return (mpz_cmp(this->value, another.value) == 0);
 }
 
@@ -146,25 +146,25 @@ void Number::printOut() {
     std::cout << this->value << std::endl;
 }
 
-Number Number::operator+=(Number another) {
-    *this = *this + another;
+Number& Number::operator+=(Number& another) {
+    mpz_add(this->value, this->value, another.value);
 
     return *this;
 }
 
-Number Number::operator+=(long int another) {
+Number& Number::operator+=(long int another) {
     mpz_add_ui(this->value, this->value, another);
 
     return *this;
 }
 
-Number Number::operator*=(Number another) {
+Number& Number::operator*=(Number& another) {
     mpz_mul(this->value, this->value, another.value);
 
     return *this;
 }
 
-Number Number::operator*=(long another) {
+Number& Number::operator*=(long another) {
     mpz_mul_si(this->value, this->value, another);
 
     return *this;
@@ -183,13 +183,13 @@ Number Number::copy() {
     return Number(tmp);
 }
 
-Number Number::operator-=(Number another) {
+Number& Number::operator-=(Number& another) {
     mpz_sub(this->value, this->value, another.value);
 
     return *this;
 }
 
-Number Number::operator/(Number another) {
+Number Number::operator/(Number& another) {
     mpz_t tmp;
     mpz_init(tmp);
 
@@ -197,8 +197,8 @@ Number Number::operator/(Number another) {
     return Number(tmp);
 }
 
-Number Number::operator/=(Number another) {
-    *this = *this / another;
+Number& Number::operator/=(Number& another) {
+    mpz_div(this->value, this->value, another.value);
 
     return *this;
 }
@@ -214,7 +214,7 @@ int Number::size() {    // used units are bits
 }
 
 Number::~Number() {
-
+//    mpz_clear(this->value);
 }
 
 void Number::clear() {

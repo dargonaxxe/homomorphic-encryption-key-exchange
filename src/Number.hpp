@@ -13,52 +13,47 @@ class Number {
 private:
     Number(mpz_t value);
     mpz_t value;
-public:
-
-    const __mpz_struct *getValue() const;
-    static unsigned long border; // Randomly generated numbers has at most such amount of numbers
-
-private:
     static gmp_randstate_t rand_state;
-
     static bool rand_state_initialized;
 public:
-    Number();
+    const __mpz_struct *getValue() const;
+    static unsigned long border; // Randomly generated numbers has at most such amount of numbers
     Number(signed long int value);
+    Number();
 
 
     unsigned int getUInt();
     signed int getSInt();
     double getDouble();
 
-    Number operator+(Number another);
+    Number operator+(Number& another);
     Number operator+(unsigned long int another);
 
     Number operator-();
-    Number operator-(Number another);
+    Number operator-(Number& another);
 
-    Number operator*(Number another);
+    Number operator*(Number& another);
     Number operator*(signed long int another);
 
-    bool operator>(Number another);
+    bool operator>(Number& another);
     bool operator>(signed long int another);
 
-    bool operator<(Number another);
+    bool operator<(Number& another);
     bool operator<(signed long int another);
 
-    bool operator==(Number another);
+    bool operator==(Number& another);
     bool operator==(signed long int another);
 
-    Number operator+=(Number another);
-    Number operator+=(long int another);
+    Number& operator+=(Number& another);
+    Number& operator+=(long int another);
 
-    Number operator*=(Number another);
-    Number operator*=(long another);
+    Number& operator*=(Number& another);
+    Number& operator*=(long another);
 
-    Number operator/(Number another);
-    Number operator/=(Number another);
+    Number operator/(Number& another);
+    Number& operator/=(Number& another);
 
-    Number operator-=(Number another);
+    Number& operator-=(Number& another);
 
     static void initRandState();
     static Number getRandom();

@@ -43,9 +43,11 @@ GeneratedData::GeneratedData(int k, int p, int n) {
 
             Number tmp = M(j, i).copy();
             for (int r = i; r < k; r++) {
-                M(j, r) -= M(i, r) * tmp;
+                Number sub_val = M(i, r) * tmp;
+                M(j, r) -= sub_val;
             }
-            l[j] -= l[i] * tmp;
+            Number sub_val = l[i] * tmp;
+            l[j] -= sub_val;
         }
     } // matrix M now is diagonalized. Now we can calculate the vector a
 
