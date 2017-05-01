@@ -102,10 +102,10 @@ void Session::keyExchange() {
     std::cout << this->Alice.getKeySize() << "; " <<  this->timeAliceInit << "; " << this->timeAliceCalc << "; " << this->timeAliceExchange;
     std::cout << "; " << this->timeBobInit << "; " << this->timeBobCalc << "; " << this->timeBobExchange << std::endl;
 
-//    Session::together << this->timeAliceInit + this->timeAliceCalc + this->timeAliceExchange << "; ";
-//    Session::together << this->timeAliceExchange + this->timeAliceCalc << "; ";
-//    Session::together << this->timeBobInit + this->timeBobExchange + this->timeBobCalc << "; ";
-//    Session::together << this->timeBobExchange + this->timeBobCalc << std::endl;
+//    std::cout << this->timeAliceInit + this->timeAliceCalc + this->timeAliceExchange << "; ";
+//    std::cout << this->timeAliceExchange + this->timeAliceCalc << "; ";
+//    std::cout << this->timeBobInit + this->timeBobExchange + this->timeBobCalc << "; ";
+//    std::cout << this->timeBobExchange + this->timeBobCalc << std::endl;
 }
 
 double Session::calcTransmissionTime(long size) {

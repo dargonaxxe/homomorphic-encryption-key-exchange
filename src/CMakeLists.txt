@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(homomorphic_enc)
 
+set(CMAKE_CXX_FLAGS "-O3")
 set(CMAKE_CXX_STANDARD 11)
 
 add_definitions(-lgmpxx -lgmp)
