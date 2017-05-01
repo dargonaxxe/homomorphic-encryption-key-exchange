@@ -24,7 +24,7 @@ Vector::Vector(int size, std::vector<Number> components) {
 
 }
 
-Number Vector::operator*(Vector another) {
+Number Vector::operator*(Vector& another) {
     Number total = Number(1 - 1);
 
     for (int i = 0; i < this->size; i++) {
@@ -35,7 +35,7 @@ Number Vector::operator*(Vector another) {
     return total;
 }
 
-Vector Vector::operator*(Number another) {
+Vector Vector::operator*(Number& another) {
     std::vector<Number> tmp;
     for (Number number : this->components)
         tmp.push_back(number * another);
@@ -43,14 +43,14 @@ Vector Vector::operator*(Number another) {
     return Vector(this->size, tmp);
 }
 
-Vector Vector::operator+=(Vector another) {
+Vector& Vector::operator+=(Vector& another) {
     for (int i = 0; i < this->size; i++)
         this->components[i] += another.components[i];
 
     return *this;
 }
 
-Vector Vector::operator+(Vector another) {
+Vector Vector::operator+(Vector& another) {
     std::vector<Number> tmp;
     for (int i = 0; i < this->size; i++)
         tmp.push_back(this->components[i] + another.components[i]);
@@ -58,7 +58,7 @@ Vector Vector::operator+(Vector another) {
     return Vector(this->size, tmp);
 }
 
-Vector Vector::operator*=(Number another) {
+Vector& Vector::operator*=(Number& another) {
     for (int i = 0; i < this->size; i++)
         this->components[i] *= another;
 
@@ -70,7 +70,7 @@ void Vector::printOut() {
         number.printOut();
 }
 
-Number Vector::operator*(std::vector<Number> another) {
+Number Vector::operator*(std::vector<Number>& another) {
     Number total = Number(1 - 1);
     for (int i = 0; i < this->size; i++) {
         Number tmp = another[i] * (*this)[i];
@@ -93,9 +93,9 @@ Number& Vector::operator[](int i) {
     return this->components[i];
 }
 
-Vector Vector::operator-=(Vector another) {
+Vector& Vector::operator-=(Vector& another) {
     for (int i = 0; i < this->size; i++)
-        this->components[i] -= another.components[i];
+        this->components[i] -= another[i];
 
     return *this;
 }

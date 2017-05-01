@@ -35,8 +35,10 @@ Matrix::Matrix(int height, int width, std::vector<Number> cells) {
 Vector Matrix::operator*(Vector another) {
     std::vector<Number> tmp;
 
-    for (int i = 0; i < this->height; i++)
-        tmp.push_back(another * (this->getRow(i)));
+    for (int i = 0; i < this->height; i++) {
+        std::vector<Number> tmp_row = this->getRow(i);
+        tmp.push_back(another * tmp_row);
+    }
 
     return Vector(this->height, tmp);
 }
@@ -74,8 +76,10 @@ std::vector<Number> Matrix::getCol(int i) {
 
 Vector Matrix::multTransposed(Vector another) {
     std::vector<Number> tmp;
-    for (int i = 0; i < this->width; i++)
-        tmp.push_back(another * this->getCol(i));
+    for (int i = 0; i < this->width; i++) {
+        std::vector<Number> tmp_col = this->getCol(i);
+        tmp.push_back(another * tmp_col);
+    }
 
     return Vector(this->width, tmp);
 }
@@ -83,8 +87,10 @@ Vector Matrix::multTransposed(Vector another) {
 Matrix Matrix::operator*(Matrix another) {
     std::vector<Number> cells;
     for (int i = 0; i < this->height; i++)
-        for (int j = 0; j < another.width; j++)
-            cells.push_back(Vector(this->width, this->getRow(i)) * another.getCol(j));
+        for (int j = 0; j < another.width; j++) {
+            std::vector<Number> tmp_col = another.getCol(j);
+            cells.push_back(Vector(this->width, this->getRow(i)) * tmp_col);
+        }
 
     return Matrix(this->height, another.width, cells);
 }
