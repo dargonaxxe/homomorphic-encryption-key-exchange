@@ -32,20 +32,20 @@ public:
 
     Matrix(int height, int width, std::vector<Number> cells);
 
-    Vector operator*(Vector another);
+    Vector operator*(Vector& another);
 
-    Matrix operator*=(Number another);
+    Matrix& operator*=(Number another);
 
-    Matrix operator+=(Matrix another);
+    Matrix& operator+=(Matrix& another);
 
     std::vector<Number> getCol(int i);
     std::vector<Number> getRow(int i);
 
-    Vector multTransposed(Vector another);
+    Vector multTransposed(Vector& another);
 
     void printOut();
 
-    Matrix operator*(Matrix another);
+    Matrix operator*(Matrix& another);
     Number& operator()(int i, int j);
 
     Vector getVCol(int i);

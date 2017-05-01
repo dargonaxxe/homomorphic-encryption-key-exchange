@@ -39,8 +39,9 @@ void User::setOpenMatrix(Matrix &open_matrix) {
 }
 
 void User::calcOpenVector() {
+    Vector shuffle_vector = Vector(this->foreign_ort_matrix.getHeight());
     Vector err = this->foreign_ort_matrix
-            .multTransposed(Vector(this->foreign_ort_matrix.getHeight()));
+            .multTransposed(shuffle_vector);
 
     this->self_open_vector = (this->foreign_open_matrix * this->enc_secret) + err;
 }
@@ -55,6 +56,7 @@ void User::setVector(Vector &vector) {
 
 void User::calcKey() {
     this->key = this->secret * this->foreign_open_vector;
+//    std::cout << this->key << std::endl;
 }
 
 long User::getKeySize() {

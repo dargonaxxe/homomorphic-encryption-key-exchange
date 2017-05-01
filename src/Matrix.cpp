@@ -32,7 +32,7 @@ Matrix::Matrix(int height, int width, std::vector<Number> cells) {
             this->cells.push_back(cells[Matrix::calcCellNumber(i, j, this->width)]);
 }
 
-Vector Matrix::operator*(Vector another) {
+Vector Matrix::operator*(Vector& another) {
     std::vector<Number> tmp;
 
     for (int i = 0; i < this->height; i++) {
@@ -43,14 +43,14 @@ Vector Matrix::operator*(Vector another) {
     return Vector(this->height, tmp);
 }
 
-Matrix Matrix::operator*=(Number another) {
+Matrix& Matrix::operator*=(Number another) {
     for (Number number : this->cells)
         number *= another;
 
     return *this;
 }
 
-Matrix Matrix::operator+=(Matrix another) {
+Matrix& Matrix::operator+=(Matrix& another) {
     for (int i = 0; i < this->height * this->width; i++)
         this->cells[i] += another.cells[i];
 
@@ -74,7 +74,7 @@ std::vector<Number> Matrix::getCol(int i) {
     return total;
 }
 
-Vector Matrix::multTransposed(Vector another) {
+Vector Matrix::multTransposed(Vector& another) {
     std::vector<Number> tmp;
     for (int i = 0; i < this->width; i++) {
         std::vector<Number> tmp_col = this->getCol(i);
@@ -84,7 +84,7 @@ Vector Matrix::multTransposed(Vector another) {
     return Vector(this->width, tmp);
 }
 
-Matrix Matrix::operator*(Matrix another) {
+Matrix Matrix::operator*(Matrix& another) {
     std::vector<Number> cells;
     for (int i = 0; i < this->height; i++)
         for (int j = 0; j < another.width; j++) {
