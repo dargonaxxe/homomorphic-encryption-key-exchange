@@ -22,6 +22,7 @@
 \usepackage[dvips]{graphicx}
 % to typeset algorithms
 \usepackage{algorithmic}
+\usepackage{cite}
 \usepackage{algorithm}
 % to typeset code fragments
 \usepackage{listings}
@@ -105,32 +106,10 @@
 	
 	\input{performance.tex}
 	
+	\input{conclusion.tex}
+	
 
-\begin{thebibliography}{99}
-
-\bibitem{c1}
-J. G. F. Francis, ``The QR Transformation I,'' {\it Comput.\ J.,} vol.~4, 1961, pp.~265--271.
-
-\bibitem{c2}
-H. Kwakernaak and R. Sivan, {\it Modern Signals and Systems,} Prentice Hall, Englewood Cliffs, NJ; 1991.
-
-\bibitem{c3}
-D. Boley and R. Maier, ``A Parallel QR Algorithm for the Non-Symmetric Eigenvalue Algorithm,'' {\it in Third SIAM Conference on Applied Linear Algebra,} Madison, WI, 1988, pp.~A20.
-
-
-\bibitem{c7}
-M. Young, {\it The Technical Writer's Handbook.} Mill Valley, CA:  University Science, 1989.
-
-\bibitem{cg}
-IEEE Guidelines for Author
-Supplied Electronic
-Text and Graphics, \url{http://www.ieee.org/portal/cms_docs_iportals/iportals/publications/journmag/transactions/eic-guide.pdf}
-
-\bibitem{cu} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{cin} ``R. Nicole, Title of paper with only first word capitalized,'' J.\ Name Stand.\ Abbrev., in press.
-\bibitem{ctr} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl.\ J.\ Magn.\ Japan, vol.~2, pp.~740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p.~301, 1982].
-
-\end{thebibliography}
-
+	\bibliography{fedcsis.bib}{}
+	\bibliographystyle{plain}
 
 \end{document}
